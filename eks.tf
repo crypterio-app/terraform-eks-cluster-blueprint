@@ -11,12 +11,15 @@ module "eks" {
     subnet_ids = module.my-vpc.private_subnets
 
     access_entries = {
-    console_user = {
-      principal_arn = "arn:aws:iam::552775148196:user/yevgeni.shapiro@gmail.com"
-      policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+    terraform_runner = {
+      principal_arn = data.aws_caller_identity.current.arn
+      policy_associations = {
+        cluster_admin = {
+          policy_arn   = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+          access_scope = { type = "cluster" }
+        }
+      }
     }
-  }
-
 
     tags = {
         environment = "development"
@@ -34,7 +37,7 @@ module "eks" {
         prod = {
         min_size       = 2
         desired_size   = 2
-        max_size       = 3               # some room for scaling
+        max_size       = 3               
         instance_types = ["t3.medium"]
     }
   }
