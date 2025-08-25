@@ -1,7 +1,7 @@
 <img width="2938" height="1733" alt="image" src="https://github.com/user-attachments/assets/d660fe1b-d8c7-4e35-ba77-18bb6f76c80f" />
 
 ## AWS EKS | Kubernetes ☸️
-Amazon Elastic Kubernetes Service (EKS) is a popular managed Kubernetes service that simplifies the deployment and management of containerized applications on AWS. To streamline the process of provisioning an EKS cluster and automate infrastructure management, developers and DevOps teams often turn to tools like Terraform, Terragrunt, and GitHub Actions
+Amazon Elastic Kubernetes Service (EKS) is a popular managed Kubernetes service that simplifies the deployment and management of containerized applications on AWS. To streamline the process of provisioning an EKS cluster and automate infrastructure management
 
 🧱 Core Components
 ```
