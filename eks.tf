@@ -11,32 +11,11 @@ module "eks" {
     subnet_ids = module.my-vpc.private_subnets
 
     access_entries = {
-        jenkins_user = {
-            kubernetes_groups = []
-            principal_arn     = var.creator_principal_arn
-
-            policy_associations = {
-                example = {
-                    policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-                    access_scope = {
-                        type       = "cluster"
-                    }
-                }   
-            }
-        },
-        aws_console_user = {
-            kubernetes_groups = []
-            principal_arn     = var.console_user_principal_arn
-            policy_associations = {
-                example = {
-                    policy_arn = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
-                    access_scope = {
-                        type       = "cluster"
-                    }
-                }   
-            }
-        }
+    console_user = {
+      principal_arn = "arn:aws:iam::552775148196:user/yevgeni.shapiro@gmail.com"
+      policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
     }
+  }
 
 
     tags = {
@@ -46,11 +25,17 @@ module "eks" {
 
     eks_managed_node_groups = {
         dev = {
-            min_size = 1
-            max_size = 1
-            desired_size = 1
-
+            min_size = 2
+            max_size = 6
+            desired_size = 2
             instance_types = ["t2.small"]
-        }
+
     }
+        prod = {
+        min_size       = 2
+        desired_size   = 2
+        max_size       = 3               # some room for scaling
+        instance_types = ["t3.medium"]
+    }
+  }
 }
