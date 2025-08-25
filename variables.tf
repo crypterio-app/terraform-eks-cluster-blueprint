@@ -35,3 +35,4 @@ variable "console_user_principal_arn" {
   description = "IAM user/role ARN who has console access to the EKS cluster"
   type        = string
 }
+
