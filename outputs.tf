@@ -7,3 +7,4 @@ output "cluster_id" {
 output "ecr_repository_url" {
   value = aws_ecr_repository.nginx_repo.repository_url
 }
+
