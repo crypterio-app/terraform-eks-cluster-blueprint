@@ -9,3 +9,5 @@ cluster_version = "1.30"
 vpc_name = "eks-vpc"
 creator_principal_arn = "" # IAM user ARN who created the EKS cluster
 console_user_principal_arn = "" # IAM user/role ARN who has console access to the EKS cluster
+
+
